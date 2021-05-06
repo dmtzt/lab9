@@ -122,6 +122,6 @@ app.post("/tables", function(req, res) {
     }
     else
         var data = {result: "error"};
-
+        
     return res.json(data);
 });

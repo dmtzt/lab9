@@ -1,8 +1,32 @@
             <footer class="footer">
                 <div class="container">
-                    <p><a href="/api/tables">API Table Link</a> | <a href="/api/waitlist">API Wait List</a>
+                    <p><a href="#" id="clear">Clear Table</a> | <a href="/api/tables">API Table Link</a> | <a href="/api/waitlist">API Wait List</a>
                 </div>
             </footer>
         </div>
     </body>
 </html>
+<script type="text/javascript">
+    $("#clear").click(function() {
+      if (confirm("Do you want to clear all current reservations?")) {
+          var request = {
+              action: "clear"
+          }
+  
+          $.post("/tables",
+          request,
+          function(data, status) {
+              switch (data.result) {
+                  case "ok":
+                      alert("All tables have been cleared! Ready to bring from waitlist");
+                      break;
+                  case "empty":
+                      alert("There are no tables to clear.");
+                      break;
+                  case "error":
+                      alert("Tables could not be cleared! Try later");
+              }
+          });
+      }
+    }); 
+  </script>
