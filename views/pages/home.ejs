@@ -1,0 +1,11 @@
+<%- include("../template/head") -%>
+
+
+<h1>Bienvenido <%=usuario.nombre%></h1>
+<% if(usuario.perfil == "admin") { %>
+<h2>Hello admin</h2>
+<% } else { %>
+    <h2>Hello user</h2>
+    <% } %>
+<p>Tu perfil es de: <%=usuario.perfil%></p>
+<%- include("../template/footer") -%>
